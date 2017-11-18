@@ -15,14 +15,14 @@ Here is that same logic usign Custom Functions to Declaratively validate our JSO
 
 ![](docs/rules.png)
 
-If any of these rules fail we'll get an Error as the result of this function.  If all rules failed  passed we'd get
+If all rules failed  passed we'd get
 
 ```JSON
 {
   "errorCode" : 0
 }
 ```
-If they all failed it would look like this
+If any of these rules fail we'll get an Error as the result of this function. If they all failed it would look like this. Notice the individual errors are added to an "errors" property.
 
 ```json
 {	"errorCode" : -2,	"errors " : 	[		{			"descriptor" : "Required value is missing",			"errorCode" : -2,			"path" : "firstName",			"type" : "JSON.Validate"		},		{			"descriptor" : "Required value is missing",			"errorCode" : -2,			"path" : "lastName",			"type" : "JSON.Validate"		},		{			"descriptor" : "Should be one of male,female",			"errorCode" : -2,			"path" : "gender",			"type" : "JSON.Validate"		}	],	"type" : "JSON.Validate"}
