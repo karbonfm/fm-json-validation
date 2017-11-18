@@ -1,0 +1,22 @@
+/**
+ *
+ * creates a JSON Validate error
+ *
+ * @param {object} JSON 
+ * 
+ * @returns {object} error
+ *
+ * @private
+ * @module JSON.Validate
+ * @see https://github.com/karbonfm/fm-json-validation
+ *
+ */
+
+
+
+JSONSetElement( "{}";
+["errorCode"; -2 ; JSONNumber]; 
+["type"; "JSON.Validate" ; JSONString]; 
+["descriptor" ; message; JSONString];
+["path" ; path; JSONString]
+)

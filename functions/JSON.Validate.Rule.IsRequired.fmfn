@@ -1,0 +1,25 @@
+/**
+ *
+ * A rule that tests for a value at the path
+ *
+ * @param {string} path the path to the value to test
+ *
+ * @returnSuccess {string} ""  / nothing
+ * @returnError {object} JSON.Validate.Error an error
+ * 
+ * @author Todd Geist, https://github.com/toddgeist
+ * @module JSON.Validate
+ * @see https://github.com/karbonfm/fm-json-validation
+ *
+ */
+
+Let(
+[
+theItem = JSONGetElement( $JSON.Validate.This ; path  )
+];
+
+Case(
+	IsEmpty( theItem ); JSON.Validate._Error( path ; "Required value is missing"  ) ; 
+	""
+)
+)

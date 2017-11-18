@@ -1,0 +1,29 @@
+/**
+ *
+ * A rule that test if a value is in a list
+ *
+ * @param {string} path the path to the value to test
+ * @param {string} theList carraige return deliminated list
+ *
+ * @returnSuccess {string} ""  / nothing
+ * @returnError {object} JSON.Validate.Error an error
+ * 
+ * @author Todd Geist, https://github.com/toddgeist
+ * @module JSON.Validate
+ * @see https://github.com/karbonfm/fm-json-validation
+ *
+ */
+
+
+Let(
+[
+theItem = JSONGetElement(  $JSON.Validate.This ; path  );
+passed =  FilterValues ( theList ; theItem ) = theItem & "¶" 
+];
+
+If(
+	passed ; "" ; 
+	JSON.Validate._Error ( path ; "Should be one of " & Substitute(theList; "¶"; ",") )
+)
+
+)

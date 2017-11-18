@@ -1,0 +1,12 @@
+/**
+ *
+ * sets the JSON to validate into a known var
+ *
+ * @param {object} JSON 
+ * 
+ * @author Todd Geist, https://github.com/toddgeist
+ * @module JSON.Validate
+ * @see https://github.com/karbonfm/fm-json-validation
+ */
+
+Let( $JSON.Validate.This = json; "" )

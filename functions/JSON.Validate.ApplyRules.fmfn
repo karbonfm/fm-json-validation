@@ -1,0 +1,40 @@
+/**
+ *
+ * Applies a list of Rules to the JSON set by JSON.Validate.This()
+ *
+ * @param {string} ListOfRule the list of rules made with List(JSON.Validate.Rule.<x>)
+ *
+ * @returnSuccess {string} ""  / nothing
+ * @returnError {object} JSON.Validate.Error an error
+ * 
+ * @author Todd Geist, https://github.com/toddgeist
+ * @module JSON.Validate
+ * @see https://github.com/karbonfm/fm-json-validation
+ *
+ */
+
+
+Let(
+[
+formatted = JSONFormatElements($JSON.Validate.This);
+listOfErrors = ListOfRules;
+$JSON.Validate.This = ""
+];
+
+Case(
+   Left(formatted; 1)="?" ; JSON.Validate._Error(""; List("JSON To Validate is Invalid." ; formatted ) );
+   IsEmpty( listOfErrors) ; JSONSetElement( "{}"; "errorCode"; 0; JSONNumber ); // no error found so return no error
+
+  
+	Let(
+	[
+	ArrayOfErrors = "[" & Substitute( listOfErrors ; "¶" ; "," ) & "]" ;
+	error = JSONSetElement("{}"; ["errorCode"; -2; JSONNumber]; ["type" ; "JSON.Validate"; JSONString] )
+	];
+	    JSONSetElement(error; "errors "; ArrayofErrors ; "" )
+	)
+
+
+)
+
+)
