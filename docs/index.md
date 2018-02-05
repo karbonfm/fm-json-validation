@@ -1,4 +1,4 @@
-## JSON.Validate.This ( json)```/**
+##JSON.Validate.This ( json)```/**
  *
  * sets the JSON to validate into a known var
  *
@@ -7,7 +7,7 @@
  * @author Todd Geist, https://github.com/toddgeist
  * @module JSON.Validate
  * @see https://github.com/karbonfm/fm-json-validation
- */```## JSON.Validate.Rule.IsRequired ( path)```/**
+ */```##JSON.Validate.Rule.IsRequired ( path)```/**
  *
  * A rule that tests for a value at the path
  *
@@ -20,7 +20,7 @@
  * @module JSON.Validate
  * @see https://github.com/karbonfm/fm-json-validation
  *
- */```## JSON.Validate.Rule.IsOneOf ( path;theList)```/**
+ */```##JSON.Validate.Rule.IsOneOf ( path;theList)```/**
  *
  * A rule that test if a value is in a list
  *
@@ -34,7 +34,21 @@
  * @module JSON.Validate
  * @see https://github.com/karbonfm/fm-json-validation
  *
- */```## JSON.Validate.ApplyRules ( ListOfRules)```/**
+ */```##JSON.Validate.Rule.IsNumeric ( path)```/**
+ *
+ * A rule that tests for a valid numeric value at the path
+ *
+ * @param {string} path the path to the value to test
+ *
+ * @returnSuccess {string} ""  / nothing
+ * @returnError {object} JSON.Validate.Error an error
+ * 
+ * @author John Renfrew, https://github.com/rwu2359
+ * @module JSON.Validate
+ * @see https://github.com/karbonfm/fm-json-validation
+ * @history 2017-11-18, John Renfrew, created
+ *
+ */```##JSON.Validate.ApplyRules ( ListOfRules)```/**
  *
  * Applies a list of Rules to the JSON set by JSON.Validate.This()
  *
@@ -47,7 +61,7 @@
  * @module JSON.Validate
  * @see https://github.com/karbonfm/fm-json-validation
  *
- */```## JSON.Validate._Error ( path;message)```/**
+ */```##JSON.Validate._Error ( path;message)```/**
  *
  * creates a JSON Validate error
  *

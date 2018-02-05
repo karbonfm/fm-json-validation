@@ -23,7 +23,7 @@ passed =  FilterValues ( theList ; theItem ) = theItem & "¶"
 
 If(
 	passed ; "" ; 
-	JSON.Validate._Error ( path ; "Should be one of " & Substitute(theList; "¶"; ",") )
+	JSON.Validate._Error ( path ; "Should be one of " & Substitute(theList; "¶"; ",") & ". Instead it was " & If(IsEmpty(theItem); "EMPTY STRING" ; theItem) )
 )
 
 )

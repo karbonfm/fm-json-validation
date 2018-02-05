@@ -1,0 +1,55 @@
+/**
+ *
+ * A rule that tests for a valid numeric value at the path
+ *
+ * @param {string} path the path to the value to test
+ *
+ * @returnSuccess {string} ""  / nothing
+ * @returnError {object} JSON.Validate.Error an error
+ * 
+ * @author John Renfrew, https://github.com/rwu2359
+ * @module JSON.Validate
+ * @see https://github.com/karbonfm/fm-json-validation
+ * @history 2017-11-18, John Renfrew, created
+ *
+ */
+
+Let(
+[
+	theItem = JSONGetElement( $JSON.Validate.This ; path  ) ;
+	isNumeric = ( 
+		Let ( 
+			_it = Case ( 
+				Left ( theItem ; 3 ) = "-0." ; Middle ( theItem ; 3 ; 999 ) ; 
+				Left ( theItem ; 2 ) = "0." ; Middle ( theItem ; 2 ; 999 ) ; 
+				Left ( theItem ; 1 ) = "-" ; Middle ( theItem ; 2 ; 999 ) ; 
+				theItem 
+				) ; 
+			_it = Abs ( GetAsNumber ( Filter ( _it ; "0123456789.,") ) ) 
+		) 
+	)
+	//isNumeric = ( Let ( _it = Filter ( theItem ; "0123456789.," ) ; Case ( Left ( _it ; 3 ) = "-0." ; Middle ( theItem ; 3 ; 999) l Left ( _it ; 2 ) = "0." ; Middle ( theItem ; 2 ; 999) ; theItem ) ) = Abs ( GetAsNumber ( theItem ) ) ) and GetAsNumber ( theItem ) = theItem
+	//test removes leading '0' before decimal point, as GetAsNumber only return .001 for numbers less than zero not 0.001
+];
+
+Case(
+	not isNumeric ; JSON.Validate._Error( path ; "Required value is not numeric or in valid range"  ) ; 
+	""
+)
+)
+
+
+/*
+
+isNumeric = ( Let ( _it = Case ( left ( theItem ; 3 ) = "-0." ; Middle ( theItem ; 3 ; 999 ) ; left ( theItem ; 2 ) = "0." ; Middle ( theItem ; 2 ; 999 ) ; left ( theItem ; 3 ) = "-" ; Middle ( theItem ; 2 ; 999 ) ; theItem ) ) ; Filter ( _it ; "0123456789.,") = Abs ( GetAsNumber ( theItem ) ) )
+
+if left ( it ; 3 ) = "-0." => Middle ( it ; 3 ; 999 )
+if left ( it ; 2 ) = "0." => Middle ( it ; 2 ; 999 )
+if left ( it ; 1 ) = "-" => Middle ( it ; 2 ; 999 )
+else it = it
+
+// can now filter out '-'
+
+Filter ( it ; "0123456789.,") = Abs ( GetAsNumber ( it ))
+
+*/
