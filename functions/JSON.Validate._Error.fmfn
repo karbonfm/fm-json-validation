@@ -18,5 +18,6 @@ JSONSetElement( "{}";
 ["errorCode"; -2 ; JSONNumber]; 
 ["type"; "JSON.Validate" ; JSONString]; 
 ["descriptor" ; message; JSONString];
-["path" ; path; JSONString]
+["path" ; path; JSONString];
+["scriptName" ; Get(ScriptName); JSONString]
 )
