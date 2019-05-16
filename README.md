@@ -15,7 +15,7 @@ Here is that same logic usign Custom Functions to Declaratively validate our JSO
 
 ![](docs/rules.png)
 
-If all rules failed  passed we'd get
+If all rules passed we'd get
 
 ```JSON
 {
