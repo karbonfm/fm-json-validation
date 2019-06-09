@@ -9,7 +9,7 @@ Validating JSON with Script Steps can be tedious.  For example, If I want to val
 ![](docs/oldway.png)
 
 ### Imperitive Vs Declaritive
-This tedious becuase we have to tell FileMaker how to validate the object imperitively. If we could simply "Declare" our rules it would be easier.
+This tedious because we have to tell FileMaker how to validate the object imperatively. If we could simply "Declare" our rules it would be easier.
 
 Here is that same logic usign Custom Functions to Declaratively validate our JSON
 
@@ -25,7 +25,31 @@ If all rules failed  passed we'd get
 If any of these rules fail we'll get an Error as the result of this function. If they all failed it would look like this. Notice the individual errors are added to an "errors" property.
 
 ```json
-{	"errorCode" : -2,	"errors " : 	[		{			"descriptor" : "Required value is missing",			"errorCode" : -2,			"path" : "firstName",			"type" : "JSON.Validate"		},		{			"descriptor" : "Required value is missing",			"errorCode" : -2,			"path" : "lastName",			"type" : "JSON.Validate"		},		{			"descriptor" : "Should be one of male,female",			"errorCode" : -2,			"path" : "gender",			"type" : "JSON.Validate"		}	],	"type" : "JSON.Validate"}
+{
+	"errorCode" : -2,
+	"errors " : 
+	[
+		{
+			"descriptor" : "Required value is missing",
+			"errorCode" : -2,
+			"path" : "firstName",
+			"type" : "JSON.Validate"
+		},
+		{
+			"descriptor" : "Required value is missing",
+			"errorCode" : -2,
+			"path" : "lastName",
+			"type" : "JSON.Validate"
+		},
+		{
+			"descriptor" : "Should be one of male,female",
+			"errorCode" : -2,
+			"path" : "gender",
+			"type" : "JSON.Validate"
+		}
+	],
+	"type" : "JSON.Validate"
+}
 ```
 
 This "error" JSON follows the format we have described [in the Error Custom Function Repo](https://github.com/karbonfm/fm-error-functions).  There is a function in that set, called `Error.IsError()`, that can detect if the above JSON is an "error"
