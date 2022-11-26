@@ -10,6 +10,8 @@
  * @author Todd Geist, https://github.com/toddgeist
  * @module JSON.Validate
  * @see https://github.com/karbonfm/fm-json-validation
+ * 
+ * @history 2022-11-26 dave@bittailor.com - Removed trailing space in "errors" array
  *
  */
 
